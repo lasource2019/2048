@@ -1,0 +1,39 @@
+from tkinter import *
+import subprocess 
+fenetre = Tk()
+
+#création d'une fenêtre
+fenetre.title("D-Mineur")
+
+#titre de la fenêtre
+Titre = Label(fenetre, text="D-Mineur", font=("Helvetica", 40), bg='grey', fg='white')
+Titre.pack()
+
+#fond d'écran gris pour ne pas faire mal aux yeux la nuit
+fenetre.config(background='grey')
+
+#création de la "frame" qui permet de rassembler les niveaux ensembles au milieu de l'écran
+boite_Niveaux = Frame(fenetre, bg='grey')
+
+#fonction permettant de lancer le démineur 
+def play():
+    subprocess.run('3.1.py')
+
+#Texte disant de choisir son niveau
+Titre_niveau = Label(fenetre, text="Choisissez votre niveau", font=("Helvetica", 30), bg='grey', fg='white')
+Titre_niveau.pack(pady= 105)
+
+#Différents boutons demandant à l'utilisateur quel niveau choisir, pas terminé
+Niveau1 = Button(boite_Niveaux, text="Niveau 1", font=("Helvetica", 20), bg='white', fg='grey')
+Niveau1.grid(pady=5, row=1, column=0, sticky=W)
+Niveau2 = Button(boite_Niveaux, text="Niveau 2", font=("Helvetica", 20), bg='white', fg='grey')
+Niveau2.grid(pady=5, row=1, column=1, sticky=W)
+Niveau3 = Button(boite_Niveaux, text="Niveau 3", font=("Helvetica", 20), bg='white', fg='grey')
+Niveau3.grid(pady=5, row=1, column=2, sticky=W)
+
+boite_Niveaux.pack(expand=YES)
+
+#bouton play
+play = Button(text="Jouons au D-mineur", font=("Helvetica", 20), bg='white', fg='grey', command=play)
+play.pack(pady=10)
+fenetre.mainloop()
